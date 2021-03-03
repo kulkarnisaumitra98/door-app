@@ -10,8 +10,10 @@ class DeviceModel(models.Model):
         primary_key=True
     )
     is_active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     objects = models.Manager()  # The default manager.
 
     def __str__(self):
-        return f'{self.mac_address}'
+        return f'{self.mac_address} {self.updated_at}'
